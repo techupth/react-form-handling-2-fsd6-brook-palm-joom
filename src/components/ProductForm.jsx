@@ -1,4 +1,40 @@
+import { useState } from "react";
+
 function ProductForm() {
+  const [name, setName] = useState("");
+  const [nameInput, setNameInput] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [imgUrlInput, setImgUrlInput] = useState("");
+  const [price, setPrice] = useState("");
+  const [priceInput, setpriceInput] = useState("");
+  const [description, setDescription] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
+
+  const handleClick = () => {
+    setName(nameInput);
+    setPrice(priceInput);
+    setImgUrl(imgUrlInput);
+    setDescription(descriptionInput);
+    alert(
+      `Name: ${nameInput}\nPrice: ${priceInput}\nImage: ${imgUrlInput}\nDescription: ${descriptionInput}\n`
+    );
+  };
+  const handleNameChange = (event) => {
+    setNameInput(event.target.value);
+  };
+
+  const handleImgUrlChange = (event) => {
+    setImgUrlInput(event.target.value);
+  };
+
+  const handlePriceChange = (event) => {
+    setpriceInput(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescriptionInput(event.target.value);
+  };
+
   return (
     <form className="post-form">
       <h1>Create Product Form</h1>
@@ -10,7 +46,7 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            onChange={handleNameChange}
           />
         </label>
       </div>
@@ -22,7 +58,7 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            onChange={handleImgUrlChange}
           />
         </label>
       </div>
@@ -34,7 +70,7 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            onChange={handlePriceChange}
           />
         </label>
       </div>
@@ -46,14 +82,16 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            onChange={handleDescriptionChange}
             rows={4}
             cols={30}
           />
         </label>
       </div>
       <div className="form-actions">
-        <button type="submit">Create</button>
+        <button type="submit" onClick={handleClick}>
+          Create
+        </button>
       </div>
     </form>
   );
