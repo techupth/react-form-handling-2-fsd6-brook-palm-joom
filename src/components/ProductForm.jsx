@@ -7,7 +7,9 @@ function ProductForm() {
   const [price, setPrice] = useState("")
   const [description, setDescription] = useState("")
 
-  const handleSubmit =()=>{
+  function handleSubmit(event) {
+    event.preventDefault();
+
     const data = {
       name: name,
       image: image,
@@ -15,6 +17,13 @@ function ProductForm() {
       description: description,
     };
     alert(JSON.stringify(data));
+
+     // Set เพื่อให้ Input แสดงข้อความว่างๆ
+     setName("");
+     setImage("");
+     setPrice("");
+     setDescription("");
+
   }
 
   return (
